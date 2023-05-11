@@ -26,7 +26,7 @@ has_many :buyers
 | category           | references | null: false                    |
 | item_condition     | references | null: false                    |
 | postage_payer      | references | null: false                    |
-| region             | references | null: false                    |
+| prefecture         | references | null: false                    |
 | preparation_day    | references | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
