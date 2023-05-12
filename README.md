@@ -23,18 +23,19 @@ has_many :buyers
 | ------------------ | ---------- | ------------------------------ |
 | name               | string     | null: false                    |
 | introduction       | text       | null: false                    |
-| category           | references | null: false                    |
-| item_condition     | references | null: false                    |
-| postage_payer      | references | null: false                    |
-| prefecture         | references | null: false                    |
-| preparation_day    | references | null: false                    |
+| category_id        | integer    | null: false                    |
+| item_condition_id  | integer    | null: false                    |
+| postage_payer_id   | integer    | null: false                    |
+| prefecture_id      | integer    | null: false                    |
+| preparation_day_id | integer    | null: false                    |
 | price              | integer    | null: false                    |
 | user               | references | null: false, foreign_key: true |
 
 belongs_to :user
 has_one :buyer
+has_one :shipping_addresses
 
-## buyersテーブル
+## buyersテーブル 
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
@@ -43,18 +44,19 @@ has_one :buyer
 
 belongs_to :user
 belongs_to :item
+has_one :shipping_address
 
 
-## shipping_addressテーブル
+## shipping_addressesテーブル
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
 | post_number     | string     | null: false                    |
-| prefecture      | references | null: false                    |
+| prefecture_id   | integer    | null: false                    |
 | city            | string     | null: false                    |
 | house_number    | string     | null: false                    |
 | building_name   | string     |                                |
 | phone_number    | string     | null: false                    |
+| buyer           | references | null: false, foreign_key: true |
 
 belongs_to :buyer 
-t.references :user, foreign_key: true
