@@ -1,4 +1,4 @@
-class Item < ApplicationRecord
+=beginclass Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   

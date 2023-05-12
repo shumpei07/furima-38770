@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+=beginclass ItemsController < ApplicationController
   def index
     @Items = Item.order("created_at DESC")
   end

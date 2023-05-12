@@ -33,7 +33,6 @@ has_many :buyers
 
 belongs_to :user
 has_one :buyer
-has_one :shipping_addresses
 
 ## buyersテーブル 
 
@@ -44,7 +43,6 @@ has_one :shipping_addresses
 
 belongs_to :user
 belongs_to :item
-has_one :shipping_address
 
 
 ## shipping_addressesテーブル

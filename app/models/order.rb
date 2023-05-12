@@ -1,4 +1,4 @@
-class Order < ApplicationRecord
+=beginclass Order < ApplicationRecord
   attr_accessor :token
   validates :price, presence: true
   validates :token, presence: true

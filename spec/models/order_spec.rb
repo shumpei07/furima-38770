@@ -1,4 +1,4 @@
-require 'rails_helper'
+=beginrequire 'rails_helper'
 
 RSpec.describe Order, type: :model do
   before do

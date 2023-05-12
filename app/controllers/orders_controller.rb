@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+=beginclass OrdersController < ApplicationController
   def index
     @order = Order.new
   end

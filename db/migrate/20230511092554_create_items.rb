@@ -1,4 +1,4 @@
-class CreateItems < ActiveRecord::Migration[6.0]
+=beginclass CreateItems < ActiveRecord::Migration[6.0]
   def change
     create_table :items do |t|
 
@@ -13,6 +13,7 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.integer    :price          , null: false
       t.timestamps
 
+      has_one :buyer
     end
   end
 end
