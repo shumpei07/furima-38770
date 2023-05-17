@@ -1,25 +1,25 @@
-=beginclass ItemsController < ApplicationController
-  def index
-    @Items = Item.order("created_at DESC")
-  end
+# class ItemsController < ApplicationController
+#   def index
+#     @Items = Item.order("created_at DESC")
+#   end
 
-  def new
-    @item = Items.new
-  end
+#   def new
+#     @item = Items.new
+#   end
 
-  def create
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to root_path
-    else
-      render :new
-    end
-  end
+#   def create
+#     @item = Item.new(item_params)
+#     if @item.save
+#       redirect_to root_path
+#     else
+#       render :new
+#     end
+#   end
 
-  private
+#   private
 
-  def item_params
-    params.require(:item).permit(:name,:category_id)
-  end
+#   def item_params
+#     params.require(:item).permit(:name,:category_id)
+#   end
 
-end
+# end
