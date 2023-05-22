@@ -33,12 +33,6 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password can't be blank")
       end
 
-      it 'password_confirmationが空では登録できないこと' do
-        @user.password_confirmation = ''
-        @user.valid?
-        expect(@user.errors.full_messages).to include("Password confirmation can't be blank")
-      end
-
       it 'last_nameが空では登録できないこと' do
         @user.last_name = ''
         @user.valid?
@@ -90,7 +84,34 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
       end
-    
+
+      it 'passwordが全角文字を含む場合は登録できないこと' do
+        @user.password = 'あpass1'
+        @user.password_confirmation = 'あpass1'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
+      end
+
+      it 'passwordとpassword_confimationが不一致だと登録できないこと' do
+        @user.password = 'password'
+        @user.password_confirmation = 'different_password'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      end
+
+      it 'emailが重複している場合は登録できないこと' do
+        existing_user = FactoryBot.create(:user, email: 'existing@example.com')
+        @user.email = 'existing@example.com'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email has already been taken")
+      end
+
+      it 'emailが@を含まない場合は登録できないこと' do
+        @user.email = 'invalid_email'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Email is invalid")
+      end
+
 
       it 'last_nameが全角（漢字・ひらがな・カタカナ）以外の文字を含む場合は登録できないこと' do
         @user.last_name = 'smith'

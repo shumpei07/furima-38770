@@ -6,7 +6,6 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :password, format: { with: /\A(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]+\z/ }
-  validates :password_confirmation, presence: true
   validates :last_name, presence: true,format: { with: /\A[\p{Han}\p{Hiragana}\p{Katakana}]+\z/u }
   validates :first_name, presence: true,format: { with: /\A[\p{Han}\p{Hiragana}\p{Katakana}]+\z/u }
   validates :last_name_kana, presence: true, format: { with: /\A[\p{Katakana}\p{Blank}ー－]+\z/ }
