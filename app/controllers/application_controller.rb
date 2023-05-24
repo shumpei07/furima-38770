@@ -3,10 +3,7 @@ class ApplicationController < ActionController::Base
    before_action :configure_permitted_parameters, if: :devise_controller?
 
 
-  #  def destroy
-  #   sign_out(current_user) # ログアウト処理を実行
-  #   redirect_to root_path
-  # end
+  
 
 
    private
