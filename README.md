@@ -32,9 +32,9 @@ has_many :buyers
 | user               | references | null: false, foreign_key: true |
 
 belongs_to :user
-has_one :buyer
+has_one :order
 
-## buyersテーブル 
+## ordersテーブル 
 
 | Column          | Type       | Options                        |
 | --------------- | ---------- | ------------------------------ |
@@ -55,6 +55,6 @@ has_one : shipping_address
 | house_number    | string     | null: false                    |
 | building_name   | string     |                                |
 | phone_number    | string     | null: false                    |
-| buyer           | references | null: false, foreign_key: true |
+| order           | references | null: false, foreign_key: true |
 
 belongs_to :buyer 
