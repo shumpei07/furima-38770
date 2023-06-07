@@ -68,7 +68,19 @@ RSpec.describe OrderShippingAddress, type: :model do
           @order.valid?
           expect(@order.errors.full_messages).to include( "Phone number is invalid")
         end
-      
+
+        it '電話番号が10桁未満の場合は登録できないこと' do
+          @order.phone_number = '123456789'
+          @order.valid?
+          expect(@order.errors.full_messages).to include( "Phone number is invalid")
+        end
+        
+        it '電話番号に半角数字以外が入力されている場合は登録できないこと' do
+          @order.phone_number = '１２３４５６７８９０'
+          @order.valid?
+          expect(@order.errors.full_messages).to include( "Phone number is invalid")
+        end
+
         it '電話番号が11桁を超える場合は登録できないこと ' do
           @order.phone_number = '123456789012'
           @order.valid?
