@@ -11,7 +11,7 @@ class OrderShippingAddress
     validates :token
     validates :city
     validates :house_number
-    validates :phone_number, format:{with: /\d{10,11}/},length: {maximum: 11}
+    validates :phone_number, format:{with: /\A\d{10,11}\z/},length: {maximum: 11}
   end
 
 

@@ -21,7 +21,7 @@ RSpec.describe OrderShippingAddress, type: :model do
           expect(@order.errors.full_messages).to include("Post number can't be blank")
         end
       
-        it '郵便番号のフォーマットが正しくない場合は登録できないこと' do
+        it '郵便番号が「３桁-４桁」の表記でない場合は登録できないこと' do
           @order.post_number = '1234567'
           @order.valid?
           expect(@order.errors.full_messages).to include( "Post number is invalid. Include hyphen(-)")
@@ -61,12 +61,6 @@ RSpec.describe OrderShippingAddress, type: :model do
           @order.phone_number = ''
           @order.valid?
           expect(@order.errors.full_messages).to include( "Phone number can't be blank")
-        end
-      
-        it '電話番号のフォーマットが正しくない場合は登録できないこと' do
-          @order.phone_number = '123456789'
-          @order.valid?
-          expect(@order.errors.full_messages).to include( "Phone number is invalid")
         end
 
         it '電話番号が10桁未満の場合は登録できないこと' do
